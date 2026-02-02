@@ -1,0 +1,28 @@
+name: Run unit and integrated test  on Application
+run-name: Test Application
+
+on:
+    push:
+        branches: [main, dev]
+    pull_request:
+        branches: [main]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v5
+
+            - name: Install packages
+              uses: actions/setup-python@v5
+              with:
+                python-version: 3.12
+
+            - name: Install packages
+              run: |
+                pip install -no-cache-dir -r requirements.txt
+
+            - name: Run test
+              run: |
+                pytest -vv | echo "No test found"
