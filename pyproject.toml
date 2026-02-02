@@ -1,0 +1,23 @@
+[project]
+name = "multi-tenant-app"
+version = "0.1.0"
+description = "Simple Multi-tenant Application"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=5.2,<6.0",
+    "django-tenants>=3.9.0",
+    "psycopg2>=2.9.11",
+    "psycopg2-binary>=2.9.11",
+    "pytest-django>=4.11.1",
+    "python-decouple>=3.8",
+]
+
+[dependency-groups]
+dev = [
+    "django-stubs>=5.2.9",
+    "mypy>=1.19.1",
+    "pre-commit>=4.5.1",
+    "pytest>=9.0.2",
+    "ruff>=0.14.14",
+]
