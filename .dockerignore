@@ -1,0 +1,7 @@
+.github/
+.git/
+.mypy_cache
+.pytest_cache
+.venv
+.env
+uv.lock

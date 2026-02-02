@@ -1,0 +1,39 @@
+version: "3.4"
+
+services:
+  web:
+    build: .
+    ports:
+      - 9000:9000
+    environment:
+      - SECRET=4$(0=b-g&r2+s0^jmitb1ts(_1e_8mxz9!siixxf0&_nbyarch
+      - DEBUG=True
+      - ALLOWED_HOSTS=127.0.0.1, localhost, .localhost, myapp.app, myapp.localhost
+      - DB_NAME=tenant_db
+      - DB_USER=postgres
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_PASSWORD=2001
+    depends_on:
+      - db
+    networks:
+      - db_net
+
+  db:
+    image: postgres:17
+    ports:
+      - 5432
+    networks:
+      - db_net
+    environment:
+      POSTGRES_USER: postgres # The PostgreSQL user (username)
+      POSTGRES_PASSWORD: 2001 # The password for the user
+      POSTGRES_DB: tenant_db # The default database to create
+    volumes:
+      - postgres_db:/var/data/postgres
+
+networks:
+  db_net:
+
+volumes:
+  postgres_db:
